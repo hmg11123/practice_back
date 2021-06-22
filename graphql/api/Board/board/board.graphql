@@ -1,0 +1,7 @@
+type Query {
+ getAllBoard: [Board!]!
+}
+
+type Mutation {
+ createBoard(title: String!, desc: String!, author: String!): Boolean!
+}

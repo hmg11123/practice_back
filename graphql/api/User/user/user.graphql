@@ -1,0 +1,43 @@
+# USER
+# 아이디
+# 이름
+# 비밀번호
+# 별명
+# 장바구니
+# 생성날자
+# 삭제 여부
+# 유저가 쓴 뎃글
+# 소속회사
+type LoginData {
+ isLogin: Boolean!
+ userData: User
+}
+
+type Query {
+ getAllUser: [User!]!
+ loginUser(email: String!, passWord: String!): LoginData!
+}
+
+type Mutation {
+ #  create
+ createUser(
+  name: String!
+  nickName: String!
+  email: String!
+  affiliatedCompany: String!
+  passWord: String!
+ ): Boolean!
+
+ #  update
+ updateUser(
+  id: String!
+  name: String!
+  nickName: String!
+  affiliatedCompany: String!
+ ): Boolean!
+
+ # delete
+ deleteUser(id: String!): Boolean!
+
+ #etc
+}

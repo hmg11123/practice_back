@@ -10,12 +10,13 @@
 # 소속회사
 type LoginData {
  isLogin: Boolean!
- userData: User
+ userData: User!
 }
 
 type Query {
  getAllUser: [User!]!
  loginUser(email: String!, passWord: String!): LoginData!
+ getUser(id: String!): User!
 }
 
 type Mutation {

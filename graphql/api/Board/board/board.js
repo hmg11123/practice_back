@@ -26,7 +26,6 @@ export default {
    const { title, desc, author } = args;
    const current = await CURRENT_TIME();
    const authorId = mongoose.Types.ObjectId(author);
-   console.log(user);
    try {
     const reuslt = await Board.create({
      title,

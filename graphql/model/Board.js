@@ -31,7 +31,7 @@ const Board = new Schema({
   type: Number,
   required: true,
  },
- isDelte: {
+ isDelete: {
   type: Boolean,
   required: true,
  },

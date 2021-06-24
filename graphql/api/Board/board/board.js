@@ -20,6 +20,21 @@ export default {
     return [];
    }
   },
+  getBoard: async (_, args) => {
+   const { id } = args;
+
+   try {
+    const result = await Board.findOne({ _id: id }).populate({
+     path: `author`,
+     model: User,
+    });
+
+    return result;
+   } catch (e) {
+    console.log(e);
+    return {};
+   }
+  },
  },
  Mutation: {
   createBoard: async (_, args) => {
@@ -35,6 +50,35 @@ export default {
      hit: 0,
      isDelete: false,
     });
+
+    return true;
+   } catch (e) {
+    console.log(e);
+    return false;
+   }
+  },
+  updateBoard: async (_, args) => {
+   const { title, desc, id } = args;
+
+   try {
+    const result = await Board.updateOne(
+     { _id: id },
+     { $set: { title, desc } },
+    );
+
+    console.log(result);
+
+    return true;
+   } catch (e) {
+    console.log(e);
+    return false;
+   }
+  },
+  deleteBoard: async (_, args) => {
+   const { id } = args;
+
+   try {
+    const result = await Board.deleteOne({ _id: id });
 
     return true;
    } catch (e) {

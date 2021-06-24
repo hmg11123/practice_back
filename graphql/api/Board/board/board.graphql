@@ -1,7 +1,10 @@
 type Query {
  getAllBoard: [Board!]!
+ getBoard(id: String!): Board!
 }
 
 type Mutation {
  createBoard(title: String!, desc: String!, author: String!): Boolean!
+ updateBoard(title: String!, desc: String!, id: String!): Boolean!
+ deleteBoard(id: String!): Boolean!
 }

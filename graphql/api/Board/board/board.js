@@ -7,10 +7,7 @@ export default {
  Query: {
   getAllBoard: async (_, args) => {
    try {
-    const result = await Board.find({}, {}).populate({
-     path: `author`,
-     model: User,
-    });
+    const result = await Board.find({}, {});
 
     console.log(result);
 
@@ -24,10 +21,7 @@ export default {
    const { id } = args;
 
    try {
-    const result = await Board.findOne({ _id: id }).populate({
-     path: `author`,
-     model: User,
-    });
+    const result = await Board.findOne({ _id: id });
 
     return result;
    } catch (e) {

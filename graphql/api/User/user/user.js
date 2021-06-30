@@ -85,5 +85,32 @@ export default {
     return false;
    }
   },
+  updateUser: async (_, args) => {
+   const { id, name, nickName, affiliatedCompany } = args;
+
+   try {
+    const result = await User.updateOne(
+     { _id: id },
+     { $set: { name, nickName, affiliatedCompany } },
+    );
+
+    return true;
+   } catch (e) {
+    console.log(e);
+    return false;
+   }
+  },
+
+  deleteUser: async (_, args) => {
+   const { id } = args;
+
+   try {
+    const result = await User.deleteOne({ _id: id });
+    return true;
+   } catch (e) {
+    console.log(e);
+    return false;
+   }
+  },
  },
 };

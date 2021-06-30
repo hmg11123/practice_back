@@ -79,7 +79,7 @@ type Board {
  title: String!
  desc: String!
  createdAt: String!
- author: User!
+ author: String!
  hit: Int!
  isDelete: Boolean!
 }

@@ -32,15 +32,16 @@ export default {
  },
  Mutation: {
   createBoard: async (_, args) => {
-   const { title, desc, author } = args;
+   const { title, desc, author, detailAuthor } = args;
    const current = await CURRENT_TIME();
-   const authorId = mongoose.Types.ObjectId(author);
+   const detailAuthorId = mongoose.Types.ObjectId(detailAuthor);
    try {
     const reuslt = await Board.create({
      title,
      desc,
      createdAt: current,
-     author: authorId,
+     author,
+     detailAuthor: detailAuthorId,
      hit: 0,
      isDelete: false,
     });

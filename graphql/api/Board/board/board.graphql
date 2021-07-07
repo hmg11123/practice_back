@@ -4,7 +4,12 @@ type Query {
 }
 
 type Mutation {
- createBoard(title: String!, desc: String!, author: String!): Boolean!
+ createBoard(
+  title: String!
+  desc: String!
+  author: String!
+  detailAuthor: String!
+ ): Boolean!
  updateBoard(title: String!, desc: String!, id: String!): Boolean!
  deleteBoard(id: String!): Boolean!
 }

@@ -80,6 +80,7 @@ type Board {
  desc: String!
  createdAt: String!
  author: String!
+ detailAuthor: String!
  hit: Int!
  isDelete: Boolean!
 }

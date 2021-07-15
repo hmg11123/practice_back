@@ -6,8 +6,14 @@ import mongoose from "mongoose";
 export default {
  Query: {
   getAllBoard: async (_, args) => {
+   const { searchValue, limit, currentPage } = args;
    try {
-    const result = await Board.find({}, {});
+    const result = await Board.find({}, {})
+     .sort({
+      createdAt: -1,
+     })
+     .limit(limit)
+     .skip(currentPage * limit);
 
     console.log(result);
 
@@ -15,6 +21,45 @@ export default {
    } catch (e) {
     console.log(e);
     return [];
+   }
+  },
+  getAllBoardlength: async (_, args) => {
+   const { searchValue } = args;
+   try {
+    const result = await Board.find({
+     $or: [
+      { title: { $regex: `.*${searchValue}.*` } },
+      { desc: { $regex: `.*${searchValue}.*` } },
+     ],
+    });
+
+    const cnt = result.length;
+
+    return parseInt(cnt);
+   } catch (e) {
+    console.log(e);
+    return 0;
+   }
+  },
+
+  getBoardTotalPage: async (_, args) => {
+   const { searchValue, limit } = args;
+
+   try {
+    const result = await Board.find({
+     title: { $regex: `.*${searchValue}.*` },
+    }).sort({
+     createdAt: -1,
+    });
+
+    const cnt = result.length;
+
+    const realTotalPage = cnt % limit > 0 ? cnt / limit + 1 : cnt / limit;
+
+    return parseInt(realTotalPage);
+   } catch (e) {
+    console.log(e);
+    return 0;
    }
   },
   getBoard: async (_, args) => {

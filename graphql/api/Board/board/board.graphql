@@ -1,6 +1,8 @@
 type Query {
- getAllBoard: [Board!]!
+ getAllBoard(searchValue: String!, limit: Int!, currentPage: Int): [Board!]!
  getBoard(id: String!): Board!
+ getBoardTotalPage(searchValue: String!, limit: Int!): Int!
+ getAllBoardlength(searchValue: String!): Int!
 }
 
 type Mutation {

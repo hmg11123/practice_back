@@ -1,16 +1,8 @@
-// BOARD
-// 아이디
-// 제목
-// 내용
-// 게시날짜
-// 게시자
-// 조회수
-// 삭제여부
 import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const Board = new Schema(
+const Notice = new Schema(
  {
   title: {
    type: String,
@@ -20,11 +12,11 @@ const Board = new Schema(
    type: String,
    required: true,
   },
-  createdAt: {
+  author: {
    type: String,
    required: true,
   },
-  author: {
+  createdAt: {
    type: String,
    required: true,
   },
@@ -32,16 +24,8 @@ const Board = new Schema(
    type: String,
    required: true,
   },
-  hit: {
-   type: Number,
-   required: true,
-  },
-  isDelete: {
-   type: Boolean,
-   required: true,
-  },
  },
  { versionKey: false },
 );
 
-export default mongoose.model(`Board`, Board, `Board`);
+export default mongoose.model(`Notice`, Notice, `Notice`);

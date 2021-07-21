@@ -84,3 +84,12 @@ type Board {
  hit: Int!
  isDelete: Boolean!
 }
+
+type Notice {
+ _id: String!
+ title: String!
+ desc: String!
+ createdAt: String!
+ author: String!
+ detailAuthor: String!
+}

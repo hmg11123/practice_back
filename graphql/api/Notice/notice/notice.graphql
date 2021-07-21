@@ -1,0 +1,3 @@
+type Query {
+ getAllNotice(searchValue: String!, limit: Int!, currentPage: Int): [Notice!]!
+}
